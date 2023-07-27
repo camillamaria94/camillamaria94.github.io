@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Página de Inicial</title>
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Asynchronous loading of the IncogniaWebSdk using defer -->
+<script defer src="https://repo.incognia.com/web/latest/incognia-web-sdk.js"></script>
+
+<!-- IncogniaWebSdk initialized after the DOM loads -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => 
+    window.IncogniaWebSdk.init('fde8ad2d-2a07-44d8-aeac-54f851f41dea')
+  )
+</script>
+</head>
+<body>
+  <div id="body-index">
+    <h1 id="h1-index">Seja bem-vindo!</h1>
+    <div id="botoes">
+      <a href='login.htm'><button id="bot">Login</button></a>
+      <a href='cadastro.htm'><button onclick="login()" id="bot">Signup</button></a>
+      <button onclick="preencherSessionToken()" id="bot">Session_token</button>
+      <br>
+      <br>
+      <label id="session-token">Session Token: </label>
+      <script src="js/index.js">
+     </script>
+    </div>
+    <br>
+    </div>
+  <script>
+    function login() {
+      var accountID = document.getElementById("account_id").value;
+        // Redireciona para a mesma página com o account_id como parâmetro GET na URL
+        window.location.href = "pagina.html?account_id=" + encodeURIComponent(accountID);
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>Página de Inicial</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div id="body-index">
+    <h1 id="h1-index">Seja bem-vindo!</h1>
+    Login efetuado com sucesso!
+    </div>
+  <script>
+    function login() {
+      IncogniaWebSdk.identify({ accountId: 'camilla' })
+      var accountID = document.getElementById("account_id").value;
+        // Redireciona para a mesma página com o account_id como parâmetro GET na URL
+        window.location.href = "pagina.html?account_id=" + encodeURIComponent(accountID);
+      }
+  </script>
+</body>
+</html>

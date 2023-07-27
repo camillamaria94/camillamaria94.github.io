@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Asynchronous loading of the IncogniaWebSdk using defer -->
+  <script defer src="https://repo.incognia.com/web/latest/incognia-web-sdk.js"></script>
+
+  <!-- IncogniaWebSdk initialized after the DOM loads -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => 
+      window.IncogniaWebSdk.init('fde8ad2d-2a07-44d8-aeac-54f851f41dea')
+    )
+  </script>
+
+</head>
+<body>
+  <div id="body-index">
+  <h1 id="h1-index">Cadastro</h1>
+  <label for="name">Nome</label>
+  <input type="text" id="name" name="name" required><br><br>
+  <label for="address">Endereço</label>
+  <input type="text" id="address" name="address" required><br><br>
+  <label for="account_id">Usuário</label>
+  <input type="text" id="account_id" name="account_id" required><br><br>
+  <label for="password">Senha</label>
+  <input type="password" id="password" name="password" required><br><br>
+ <button onclick="signup()">Cadastrar</button>
+  <br>
+  <label id="session-token-label" style="display: none;">Session Token: </label>
+  </div>
+
+  <script>
+    function signup() {
+    IncogniaWebSdk.sendCustomEvent({
+        tag: 'onboarding',
+        externalId: 'teste',
+        accountId: 'camilla',
+        address: {
+          street: 'Main Street',
+          number: '100',
+          city: 'New York',
+          state: 'NY',
+          countryName: 'US',
+          postalCode: '10001',
+          addressLine: 'Main Street 100, New York, NY, US, 10001',
+          latitude: 40.7486,
+          longitude: -73.9864
+        },
+      properties: {
+        string: 'string',
+        number: 123,
+        boolean: false
+      }
+
+})
+console.log("passou aqui")
+        
+      }
+  </script>
+</body>
+</html>

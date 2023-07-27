@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Página de Login</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="body-index">
+  <h1 id="h1-index">Página de Login</h1>
+  <label for="account_id">Account ID:</label>
+  <input type="text" id="account_id" name="account_id" required>
+  <label for="password">Senha:</label>
+  <input type="password" id="password" name="password" required>
+  <a href="main.htm"><button onclick="login()">Logar</button></a>
+  <br>
+  <label id="session-token-label" style="display: none;">Session Token: </label>
+</div>
+  <script>
+    function login() {
+      var accountID = document.getElementById("account_id").value;
+      var accountID = document.getElementById("password").value;
+        // Redireciona para a mesma página com o account_id como parâmetro GET na URL
+        window.location.href = "pagina.html?account_id=" + encodeURIComponent(accountID);
+      }
+  </script>
+</body>
+</html>
