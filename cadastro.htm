@@ -17,6 +17,7 @@
 <body>
   <div id="body-index">
   <h1 id="h1-index">Cadastro</h1>
+  <form name="cadastro">
   <label for="name">Nome</label>
   <input type="text" id="name" name="name" required><br><br>
   <label for="street">Rua</label>
@@ -35,22 +36,32 @@
   <input type="text" id="account_id" name="account_id" required><br><br>
   <label for="password">Senha</label>
   <input type="password" id="password" name="password" required><br><br>
- <button onclick="signup()">Cadastrar</button>
+ <input type="submit" class="enviar" onclick="signup();" value="Enviar" />
+</form>
   </div>
 
   <script>
     function signup() {
+    var name = document.getElementById("name");
+    var street = document.getElementById("street");
+    var number = document.getElementById("number");
+    var city = document.getElementById("city");
+    var state = document.getElementById("state");
+    var countryName = document.getElementById("countryName");
+    var account_id = document.getElementById("account_id");
+    var postalCode = document.getElementById("postalCode");
+    
     IncogniaWebSdk.sendCustomEvent({
         tag: 'onboarding',
         externalId: 'teste',
-        accountId: 'camilla',
+        accountId: account_id.value,
         address: {
-          street: 'Main Street',
-          number: '100',
-          city: 'New York',
-          state: 'NY',
-          countryName: 'US',
-          postalCode: '10001'
+          street: street.value,
+          number: number.value,
+          city: city.value,
+          state: state.vale,
+          countryName: countryName.value,
+          postalCode: postalCode.value
         }
     })
 
