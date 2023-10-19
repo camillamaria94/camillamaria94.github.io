@@ -35,8 +35,9 @@
             login_id: '1234'
             }
           })
-        // Redireciona para a mesma página com o account_id como parâmetro GET na URL
-        window.location.href = "main.htm?account_id=" + encodeURIComponent(accountID);
+          setTimeout(function() {
+            window.location.href = "main.htm?account_id=" + encodeURIComponent(accountID);
+          }, 2000);
         }
   </script>
 </body>
