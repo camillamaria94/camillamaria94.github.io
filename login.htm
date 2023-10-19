@@ -2,6 +2,16 @@
 <head>
   <title>Página de Login</title>
   <link rel="stylesheet" href="css/index.css">
+  <!-- Asynchronous loading of the IncogniaWebSdk using defer -->
+  <script defer src="https://repo.incognia.com/web/latest/incognia-web-sdk.js"></script>
+
+  <!-- IncogniaWebSdk initialized after the DOM loads -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => 
+      window.IncogniaWebSdk.init('fde8ad2d-2a07-44d8-aeac-54f851f41dea')
+    )
+  </script>
+
 </head>
 <body>
 <div id="body-index">
@@ -10,17 +20,24 @@
   <input type="text" id="account_id" name="account_id" required>
   <label for="password">Senha:</label>
   <input type="password" id="password" name="password" required>
-  <a href="main.htm"><button onclick="login()">Logar</button></a>
+ <button onclick="login()">Logar</button>
   <br>
   <label id="session-token-label" style="display: none;">Session Token: </label>
 </div>
   <script>
     function login() {
-      var accountID = document.getElementById("account_id").value;
-      var accountID = document.getElementById("password").value;
+      var accountID = document.getElementById("account_id");
+      //var password = document.getElementById("password").value;
+        window.IncogniaWebSdk.sendCustomEvent({
+          tag: 'login',
+          accountId: accountID.value,
+          properties: {
+            login_id: '1234'
+            }
+          })
         // Redireciona para a mesma página com o account_id como parâmetro GET na URL
-        window.location.href = "pagina.html?account_id=" + encodeURIComponent(accountID);
-      }
+        window.location.href = "main.htm?account_id=" + encodeURIComponent(accountID);
+        }
   </script>
 </body>
 </html>
