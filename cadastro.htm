@@ -9,14 +9,15 @@
   <!-- IncogniaWebSdk initialized after the DOM loads -->
   <script>
     window.addEventListener('DOMContentLoaded', () => 
-      window.IncogniaWebSdk.init('fde8ad2d-2a07-44d8-aeac-54f851f41dea')
+    window.IncogniaWebSdk.init('fde8ad2d-2a07-44d8-aeac-54f851f41dea')
     )
   </script>
 
 </head>
+
 <body>
   <div id="body-index">
-  <h1 id="h1-index">Cadastro 1</h1>
+  <h1 id="h1-index">Cadastro</h1>
   <form name="cadastro">
   <label for="name">Nome</label>
   <input type="text" id="name" name="name" required><br><br>
@@ -36,8 +37,13 @@
   <input type="text" id="account_id" name="account_id" required><br><br>
   <label for="password">Senha</label>
   <input type="password" id="password" name="password" required><br><br>
- <input type="submit" class="enviar" onclick="signup();" value="Enviar" />
+  <input type="submit" class="enviar" onclick="signup();" value="Enviar" />
 </form>
+<button onclick="preencherSessionToken()" id="bot">Session_token</button>
+<br>
+<label id="session-token">Session Token: </label>
+<script src="js/index.js">
+</script>
   </div>
 
   <script>
@@ -51,23 +57,21 @@
     var account_id = document.getElementById("account_id");
     var postalCode = document.getElementById("postalCode");
     
-    IncogniaWebSdk.sendCustomEvent({
-        tag: 'onboarding',
-        externalId: 'teste',
-        accountId: account_id.value,
-        address: {
-          street: street.value,
-          number: number.value,
-          city: city.value,
-          state: state.vale,
-          countryName: countryName.value,
-          postalCode: postalCode.value
-        }
-    })
-
+  window.IncogniaWebSdk.sendCustomEvent({
+  tag: 'onboarding',
+  externalId: '123',
+  accountId: account_id.value,
+  address: {
+    street: street.value,
+    number: number.value,
+    city: city.value,
+    state: state.value,
+    countryName: 'US',
+    postalCode: postalCode.value
+  }
+})
 console.log("passou aqui")
-        
-      }
+}
   </script>
 </body>
 </html>
